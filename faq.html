@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FAQ – CV Studio</title>
+    <meta
+      name="description"
+      content="Frequently asked questions about CV Studio, exporting, ATS, and customisation."
+    />
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'system-ui', 'sans-serif'],
+              display: ['Poppins', 'system-ui', 'sans-serif'],
+            },
+            colors: {
+              primary: {
+                50: '#eff6ff',
+                100: '#dbeafe',
+                200: '#bfdbfe',
+                500: '#2563eb',
+                600: '#1d4ed8',
+                700: '#1e40af',
+              },
+              ink: {
+                900: '#081024',
+                700: '#1f2933',
+                500: '#4b5563',
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: radial-gradient(circle at top left, #eff6ff 0, #f9fafb 42%, #f3f4f6 100%);
+      }
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+      }
+      .section-label {
+        letter-spacing: 0.12em;
+      }
+    </style>
+  </head>
+  <body class="min-h-full text-ink-900">
+    <div class="min-h-screen flex flex-col">
+      <header class="border-b border-slate-200/70 bg-white/80 backdrop-blur">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between flex-wrap md:flex-nowrap gap-4 md:gap-0">
+          <div class="flex items-center gap-2 flex-shrink-0">
+            <div
+              class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-primary-600 to-sky-400 shadow-md"
+            >
+              <span class="font-display text-lg font-semibold text-white tracking-tight">CV</span>
+            </div>
+            <div class="leading-tight">
+              <a href="index.html" class="font-display text-base font-semibold text-ink-900">
+                CV Studio
+              </a>
+              <p class="text-xs text-ink-500">
+                Build a world‑class CV in minutes
+              </p>
+            </div>
+          </div>
+          <nav class="hidden md:flex items-center gap-4 lg:gap-8 text-sm text-ink-500 flex-shrink-0">
+            <a href="index.html" class="hover:text-primary-600 transition-colors whitespace-nowrap">
+              Home
+            </a>
+            <a href="why.html" class="hover:text-primary-600 transition-colors whitespace-nowrap">
+              How it works
+            </a>
+            <a href="templates.html" class="hover:text-primary-600 transition-colors whitespace-nowrap">
+              Templates
+            </a>
+            <a href="faq.html" class="text-primary-600 font-medium whitespace-nowrap">
+              FAQ
+            </a>
+            
+          </nav>
+          <div class="flex items-center gap-2 md:gap-3 flex-shrink-0">
+            <a
+              href="index.html"
+              class="hidden sm:inline-flex items-center rounded-full border border-slate-200 px-3 py-1.5 text-xs font-medium text-ink-700 hover:bg-slate-50 transition-colors whitespace-nowrap"
+            >
+              Back to builder
+            </a>
+            <a
+              href="index.html"
+              class="hidden sm:inline-flex items-center rounded-full bg-primary-600 px-3 md:px-4 py-1.5 text-xs md:text-sm font-semibold text-white shadow-md shadow-primary-600/30 hover:bg-primary-700 transition-colors whitespace-nowrap"
+            >
+              Start building
+            </a>
+            <!-- Mobile menu button -->
+            <button
+              id="mobile-menu-button"
+              class="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-ink-700 hover:bg-slate-100 transition-colors"
+              aria-label="Toggle menu"
+            >
+              <svg
+                id="mobile-menu-icon"
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+              <svg
+                id="mobile-menu-close-icon"
+                class="w-6 h-6 hidden"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <!-- Mobile menu -->
+        <div
+          id="mobile-menu"
+          class="hidden md:hidden border-t border-slate-200/70 bg-white/95 backdrop-blur"
+        >
+          <nav class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-4 space-y-3 text-sm text-ink-500">
+            <a
+              href="index.html"
+              class="block py-2 hover:text-primary-600 transition-colors"
+              onclick="closeMobileMenu()"
+            >
+              Home
+            </a>
+            <a
+              href="why.html"
+              class="block py-2 hover:text-primary-600 transition-colors"
+              onclick="closeMobileMenu()"
+            >
+              How it works
+            </a>
+            <a
+              href="templates.html"
+              class="block py-2 hover:text-primary-600 transition-colors"
+              onclick="closeMobileMenu()"
+            >
+              Templates
+            </a>
+            <a
+              href="faq.html"
+              class="block py-2 text-primary-600 font-medium"
+              onclick="closeMobileMenu()"
+            >
+              FAQ
+            </a>
+            <a
+              href="login.html"
+              class="block py-2 hover:text-primary-600 transition-colors"
+              onclick="closeMobileMenu()"
+            >
+              Sign in
+            </a>
+            <a
+              href="register.html"
+              class="block py-2 hover:text-primary-600 transition-colors"
+              onclick="closeMobileMenu()"
+            >
+              Sign up
+            </a>
+            <div class="pt-3 border-t border-slate-200 flex flex-col gap-2">
+              <a
+                href="index.html"
+                class="inline-flex items-center justify-center rounded-full border border-slate-200 px-3 py-1.5 text-xs font-medium text-ink-700 hover:bg-slate-50 transition-colors"
+                onclick="closeMobileMenu()"
+              >
+                Back to builder
+              </a>
+              <a
+                href="index.html"
+                class="inline-flex items-center justify-center rounded-full bg-primary-600 px-4 py-1.5 text-sm font-semibold text-white shadow-md shadow-primary-600/30 hover:bg-primary-700 transition-colors"
+                onclick="closeMobileMenu()"
+              >
+                Start building
+              </a>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <main class="flex-1">
+        <section class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+          <div class="max-w-3xl space-y-4 text-center mx-auto">
+            <div class="flex justify-center">
+              <p
+                class="inline-flex items-center gap-2 rounded-full bg-primary-50 px-3 py-1 text-[11px] font-medium text-primary-700 section-label"
+              >
+                <span class="h-1.5 w-1.5 rounded-full bg-primary-500"></span>
+                Frequently asked questions
+              </p>
+            </div>
+            <h1
+              class="font-display text-3xl sm:text-4xl font-semibold tracking-tight text-ink-900"
+            >
+              Everything you need to know about using CV Studio.
+            </h1>
+            <p class="text-sm sm:text-base text-ink-500 max-w-2xl mx-auto leading-relaxed">
+              If you’re wondering how exporting works, whether it’s ATS‑safe, or how much you can
+              customise, you’re in the right place.
+            </p>
+          </div>
+
+          <div class="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] items-start">
+            <div class="space-y-4">
+              <details
+                class="glass-panel rounded-2xl border border-slate-200/80 p-4 open:shadow-md open:shadow-slate-900/10"
+                open
+              >
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4">
+                  <div class="flex-1 text-center">
+                    <h2 class="text-sm font-semibold text-ink-900">
+                      Is my CV really ATS‑friendly?
+                    </h2>
+                    <p class="text-[11px] text-ink-500">
+                      Yes – as long as you export correctly.
+                    </p>
+                  </div>
+                  <span class="text-xs text-ink-500">▼</span>
+                </summary>
+                <div class="mt-3 text-[13px] text-ink-600 leading-relaxed">
+                  CV Studio uses semantic HTML, a clear single column structure, and standard
+                  section labels like “Experience”, “Education”, and “Skills”. When you export via
+                  your browser’s print dialog to PDF, all text stays selectable, so ATS software
+                  can read it just like a Word document.
+                </div>
+              </details>
+
+              <details class="glass-panel rounded-2xl border border-slate-200/80 p-4">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4">
+                  <div class="flex-1 text-center">
+                    <h2 class="text-sm font-semibold text-ink-900">
+                      How do I export to PDF?
+                    </h2>
+                    <p class="text-[11px] text-ink-500">
+                      Use your browser’s print function.
+                    </p>
+                  </div>
+                  <span class="text-xs text-ink-500">▼</span>
+                </summary>
+                <div class="mt-3 text-[13px] text-ink-600 leading-relaxed space-y-2">
+                  <p>
+                    Open the builder, click the “Export PDF” button above the preview, or press
+                    <span class="font-mono text-[11px]">Ctrl + P</span> /
+                    <span class="font-mono text-[11px]">Cmd + P</span>.
+                  </p>
+                  <ul class="list-disc list-inside text-[12px] text-ink-500 space-y-1">
+                    <li>Select “Save as PDF” as the destination.</li>
+                    <li>Turn off headers/footers in the print options.</li>
+                    <li>Enable background graphics if you want accent colours.</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details class="glass-panel rounded-2xl border border-slate-200/80 p-4">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4">
+                  <div class="flex-1 text-center">
+                    <h2 class="text-sm font-semibold text-ink-900">
+                      Can I use this on mobile?
+                    </h2>
+                    <p class="text-[11px] text-ink-500">
+                      Yes, it’s responsive.
+                    </p>
+                  </div>
+                  <span class="text-xs text-ink-500">▼</span>
+                </summary>
+                <div class="mt-3 text-[13px] text-ink-600 leading-relaxed">
+                  The layout is built with Tailwind CSS and is fully responsive. You can fill in
+                  the guided steps on your phone or tablet. For the cleanest PDF export, we still
+                  recommend a laptop or desktop.
+                </div>
+              </details>
+
+              <details class="glass-panel rounded-2xl border border-slate-200/80 p-4">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4">
+                  <div class="flex-1 text-center">
+                    <h2 class="text-sm font-semibold text-ink-900">
+                      Can I change fonts or colours?
+                    </h2>
+                    <p class="text-[11px] text-ink-500">
+                      A little bit in the UI, fully in code.
+                    </p>
+                  </div>
+                  <span class="text-xs text-ink-500">▼</span>
+                </summary>
+                <div class="mt-3 text-[13px] text-ink-600 leading-relaxed space-y-2">
+                  <p>
+                    In the builder, you can switch accent colours between blue, slate, and
+                    emerald. If you’re comfortable editing code, you can open the HTML files and
+                    adjust the Tailwind config or font imports for a fully custom look.
+                  </p>
+                </div>
+              </details>
+
+              <details class="glass-panel rounded-2xl border border-slate-200/80 p-4">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4">
+                  <div class="flex-1 text-center">
+                    <h2 class="text-sm font-semibold text-ink-900">
+                      Is my data stored anywhere?
+                    </h2>
+                    <p class="text-[11px] text-ink-500">
+                      In this version, everything is local.
+                    </p>
+                  </div>
+                  <span class="text-xs text-ink-500">▼</span>
+                </summary>
+                <div class="mt-3 text-[13px] text-ink-600 leading-relaxed">
+                  This static version of CV Studio runs fully in your browser. There is no
+                  backend or database connected, so your information is not uploaded or stored on
+                  a server. If you refresh the page, you’ll need to re‑enter your details.
+                </div>
+              </details>
+            </div>
+
+            <aside
+              class="glass-panel rounded-2xl border border-slate-200/80 p-5 shadow-md shadow-slate-900/5 space-y-3"
+            >
+              <h2 class="text-sm font-semibold text-ink-900 text-center">
+                Need a more advanced version?
+              </h2>
+              <p class="text-[13px] text-ink-600 leading-relaxed">
+                This project is built with HTML, Tailwind CSS, and vanilla JavaScript. You can
+                easily extend it with:
+              </p>
+              <ul class="list-disc list-inside text-[12px] text-ink-500 space-y-1">
+                <li>LocalStorage to save multiple CVs in the browser</li>
+                <li>A simple backend (Node/Express, Firebase, Supabase) to store profiles</li>
+                <li>Multiple templates and languages per user</li>
+              </ul>
+              <div class="flex justify-center">
+                <a
+                  href="index.html"
+                  class="mt-3 inline-flex items-center rounded-full bg-primary-600 px-4 py-1.5 text-[12px] font-semibold text-white shadow-md shadow-primary-600/30 hover:bg-primary-700"
+                >
+                  Go back to the builder
+                </a>
+              </div>
+            </aside>
+          </div>
+        </section>
+      </main>
+
+      <footer class="border-t border-slate-200/70 bg-white/80 backdrop-blur">
+        <div
+          class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2"
+        >
+          <p class="text-[11px] text-ink-500">
+            © <span id="year"></span> CV Studio. Crafted for modern job seekers.
+          </p>
+          <div class="flex flex-wrap gap-3 text-[11px] text-ink-500">
+            <span>Designed for ATS compatibility</span>
+            <span class="hidden sm:inline text-slate-300">•</span>
+            <span>Best with PDF export</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- AI Chat Widget (shared) -->
+    <button
+      id="ai-chat-toggle"
+      class="fixed bottom-5 right-5 z-40 inline-flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-tr from-primary-600 to-sky-400 text-white shadow-lg shadow-primary-600/40 hover:scale-105 active:scale-95 transition-transform"
+      aria-label="Open AI CV assistant"
+    >
+      <span class="text-lg leading-none">✧</span>
+    </button>
+    <div
+      id="ai-chat-panel"
+      class="fixed bottom-20 right-5 z-40 w-80 max-w-[92vw] glass-panel rounded-2xl border border-slate-200/80 shadow-2xl shadow-slate-900/20 p-3 text-[12px] hidden"
+    >
+      <div class="flex items-center justify-between gap-2 mb-2">
+        <div>
+          <p class="text-[11px] font-medium text-primary-700 tracking-[0.16em] uppercase">
+            AI CV assistant
+          </p>
+          <p class="text-[11px] text-ink-500">
+            Ask a follow‑up if the FAQ didn’t cover something.
+          </p>
+        </div>
+        <button
+          type="button"
+          id="ai-chat-close"
+          class="h-6 w-6 inline-flex items-center justify-center rounded-full border border-slate-200 text-[11px] text-ink-500 hover:bg-slate-50"
+        >
+          ✕
+        </button>
+      </div>
+      <div
+        id="ai-chat-messages"
+        class="mb-2 max-h-56 overflow-y-auto space-y-2 pr-1"
+      >
+        <div class="flex gap-2">
+          <div
+            class="h-6 w-6 flex-shrink-0 rounded-full bg-gradient-to-tr from-primary-600 to-sky-400 text-[11px] text-white flex items-center justify-center"
+          >
+            CV
+          </div>
+          <div
+            class="rounded-2xl rounded-tl-sm bg-slate-50 px-3 py-2 text-[11px] text-ink-700 shadow-sm border border-slate-200/80"
+          >
+            Not seeing your question here? Ask me directly and I’ll guide you through it.
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-1 mb-2">
+        <button
+          type="button"
+          data-ai-suggest="What is the best way to tailor my CV to a specific job description?"
+          class="px-2 py-1 rounded-full bg-slate-50 border border-slate-200 text-[10px] text-ink-600 hover:bg-slate-100"
+        >
+          Tailor my CV
+        </button>
+        <button
+          type="button"
+          data-ai-suggest="Can you help me make my CV shorter but still strong?"
+          class="px-2 py-1 rounded-full bg-slate-50 border border-slate-200 text-[10px] text-ink-600 hover:bg-slate-100"
+        >
+          Make it shorter
+        </button>
+      </div>
+      <form id="ai-chat-form" class="flex items-end gap-2 text-[12px]">
+        <textarea
+          id="ai-chat-input"
+          rows="2"
+          placeholder="Ask anything about your CV..."
+          class="flex-1 resize-none rounded-xl border border-slate-200 bg-white px-2.5 py-1.5 shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100 outline-none"
+        ></textarea>
+        <button
+          type="submit"
+          class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary-600 text-white text-[11px] shadow-md shadow-primary-600/40 hover:bg-primary-700"
+        >
+          ➤
+        </button>
+      </form>
+      <p class="mt-1 text-[10px] text-ink-400">
+        Demo only – responses are generated in your browser for copywriting ideas.
+      </p>
+    </div>
+
+    <script>
+      const yearEl = document.getElementById('year');
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+
+      // Mobile menu toggle
+      function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        const icon = document.getElementById('mobile-menu-icon');
+        const closeIcon = document.getElementById('mobile-menu-close-icon');
+        
+        menu.classList.toggle('hidden');
+        icon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      }
+
+      function closeMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        const icon = document.getElementById('mobile-menu-icon');
+        const closeIcon = document.getElementById('mobile-menu-close-icon');
+        
+        menu.classList.add('hidden');
+        icon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const menuButton = document.getElementById('mobile-menu-button');
+        if (menuButton) {
+          menuButton.addEventListener('click', toggleMobileMenu);
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+          const menu = document.getElementById('mobile-menu');
+          const button = document.getElementById('mobile-menu-button');
+          if (menu && button && !menu.contains(e.target) && !button.contains(e.target)) {
+            if (!menu.classList.contains('hidden')) {
+              closeMobileMenu();
+            }
+          }
+        });
+      });
+    </script>
+    <script src="chat-widget.js"></script>
+  </body>
+</html>
+
+

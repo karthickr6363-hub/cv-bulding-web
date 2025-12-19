@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CV Builder – Craft a World‑Class Resume</title>
+    <meta
+      name="description"
+      content="Create an ATS-friendly, modern CV with a guided, step-by-step CV builder. Clean design, responsive layout, and professional templates."
+    />
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'system-ui', 'sans-serif'],
+              display: ['Poppins', 'system-ui', 'sans-serif'],
+            },
+            colors: {
+              primary: {
+                50: '#eff6ff',
+                100: '#dbeafe',
+                200: '#bfdbfe',
+                500: '#2563eb',
+                600: '#1d4ed8',
+                700: '#1e40af',
+              },
+              ink: {
+                900: '#081024',
+                700: '#1f2933',
+                500: '#4b5563',
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Base styles -->
+    <style>
+      body {
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+          sans-serif;
+        background: radial-gradient(circle at top left, #eff6ff 0, #f9fafb 42%, #f3f4f6 100%);
+      }
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+      }
+      .section-label {
+        letter-spacing: 0.12em;
+      }
+      @media print {
+        body {
+          background: white;
+        }
+        #app-shell,
+        header,
+        footer {
+          display: none !important;
+        }
+        #cv-preview {
+          box-shadow: none !important;
+          border: none !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="min-h-full text-ink-900">
+    <div id="app-shell" class="min-h-screen flex flex-col">
+      <!-- Navbar -->
+      <header class="border-b border-slate-200/70 bg-white/80 backdrop-blur">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <div
+              class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-primary-600 to-sky-400 shadow-md"
+            >
+              <span class="font-display text-lg font-semibold text-white tracking-tight">CV</span>
+            </div>
+            <div class="leading-tight">
+              <div class="font-display text-base font-semibold text-ink-900">
+                CV Studio
+              </div>
+              <p class="text-xs text-ink-500">
+                Build a world‑class CV in minutes
+              </p>
+            </div>
+          </div>
+          <nav class="hidden md:flex items-center gap-8 text-sm text-ink-500">
+            <a href="index.html" class="text-primary-600 font-medium">
+              Home
+            </a>
+            <a href="why.html" class="hover:text-primary-600 transition-colors">
+              How it works
+            </a>
+            <a href="templates.html" class="hover:text-primary-600 transition-colors">
+              Templates
+            </a>
+            <a href="faq.html" class="hover:text-primary-600 transition-colors">
+              FAQ
+            </a>
+              
+          </nav>
+          <div class="flex items-center gap-3">
+           
+            <a
+              href="register.html"
+              class="hidden sm:inline-flex items-center rounded-full bg-primary-600 px-4 py-1.5 text-xs sm:text-sm font-semibold text-white shadow-md shadow-primary-600/30 hover:bg-primary-700 transition-colors"
+            >
+              Start free
+            </a>
+            <!-- Mobile menu button -->
+            <button
+              id="mobile-menu-button"
+              class="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-ink-700 hover:bg-slate-100 transition-colors"
+              aria-label="Toggle menu"
+            >
+              <svg
+                id="mobile-menu-icon"
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+              <svg
+                id="mobile-menu-close-icon"
+                class="w-6 h-6 hidden"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <!-- Mobile menu -->
+        <div
+          id="mobile-menu"
+          class="hidden md:hidden border-t border-slate-200/70 bg-white/95 backdrop-blur"
+        >
+          <nav class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-4 space-y-3 text-sm text-ink-500">
+            <a
+              href="index.html"
+              class="block py-2 text-primary-600 font-medium"
+              onclick="closeMobileMenu()"
+            >
+              Home
+            </a>
+            <a
+              href="why.html"
+              class="block py-2 hover:text-primary-600 transition-colors"
+              onclick="closeMobileMenu()"
+            >
+              How it works
+            </a>
+            <a
+              href="templates.html"
+              class="block py-2 hover:text-primary-600 transition-colors"
+              onclick="closeMobileMenu()"
+            >
+              Templates
+            </a>
+            <a
+              href="faq.html"
+              class="block py-2 hover:text-primary-600 transition-colors"
+              onclick="closeMobileMenu()"
+            >
+              FAQ
+            </a>
+            <a
+              href="register.html"
+              class="block py-2 hover:text-primary-600 transition-colors"
+              onclick="closeMobileMenu()"
+            >
+              Sign up
+            </a>
+            <div class="pt-3 border-t border-slate-200 flex flex-col gap-2">
+              <a
+                href="login.html"
+                class="inline-flex items-center justify-center rounded-full border border-slate-200 px-3 py-1.5 text-xs font-medium text-ink-700 hover:bg-slate-50 transition-colors"
+                onclick="closeMobileMenu()"
+              >
+                Sign in
+              </a>
+              <a
+                href="register.html"
+                class="inline-flex items-center justify-center rounded-full bg-primary-600 px-4 py-1.5 text-sm font-semibold text-white shadow-md shadow-primary-600/30 hover:bg-primary-700 transition-colors"
+                onclick="closeMobileMenu()"
+              >
+                Start free
+              </a>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Hero + Builder -->
+      <main class="flex-1">
+        <section class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
+          <div class="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] items-start">
+            <!-- Left: Copy + Steps + Form -->
+            <div class="space-y-8">
+              <!-- Hero copy -->
+              <div class="space-y-4 text-center">
+                <div class="flex justify-center">
+                  <p
+                    class="inline-flex items-center gap-2 rounded-full bg-primary-50 px-3 py-1 text-[11px] font-medium text-primary-700 section-label"
+                  >
+                    <span class="h-1.5 w-1.5 rounded-full bg-primary-500"></span>
+                    ATS‑friendly • Recruiter‑approved • In minutes
+                  </p>
+                </div>
+                <h1
+                  class="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-ink-900"
+                >
+                  Turn your experience into a
+                  <span class="bg-gradient-to-r from-primary-600 to-sky-500 bg-clip-text text-transparent">
+                    standout CV
+                  </span>
+                  in 5 guided steps.
+                </h1>
+                <p class="max-w-xl mx-auto text-sm sm:text-base text-ink-500 leading-relaxed">
+                  No clutter, no guesswork. Just a clean, modern layout that passes
+                  Applicant Tracking Systems and impresses hiring managers.
+                </p>
+                <div class="flex flex-wrap items-center justify-center gap-3 text-xs text-ink-500">
+                  <div class="inline-flex items-center gap-1.5 rounded-full bg-white/70 px-3 py-1 border border-slate-200">
+                    <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                    Guided builder
+                  </div>
+                  <div class="inline-flex items-center gap-1.5 rounded-full bg-white/70 px-3 py-1 border border-slate-200">
+                    <span class="h-1.5 w-1.5 rounded-full bg-amber-400"></span>
+                    ATS‑friendly layout
+                  </div>
+                  <div class="inline-flex items-center gap-1.5 rounded-full bg-white/70 px-3 py-1 border border-slate-200">
+                    <span class="h-1.5 w-1.5 rounded-full bg-primary-500"></span>
+                    Export to PDF
+                  </div>
+                </div>
+              </div>
+
+              <!-- Progress / steps -->
+              <div
+                class="glass-panel rounded-2xl border border-slate-200/80 shadow-lg shadow-slate-900/5 p-4 sm:p-5 space-y-4"
+              >
+                <div class="flex items-center justify-between gap-4">
+                  <div>
+                    <p class="text-xs font-medium text-primary-700 section-label">
+                      STEP <span id="step-number">1</span> OF 5
+                    </p>
+                    <p id="step-title" class="mt-1 text-sm font-semibold text-ink-900">
+                      Personal details
+                    </p>
+                  </div>
+                  <div class="flex-1 max-w-xs">
+                    <div class="h-1.5 w-full rounded-full bg-slate-100 overflow-hidden">
+                      <div
+                        id="step-progress"
+                        class="h-full w-1/5 rounded-full bg-gradient-to-r from-primary-500 to-sky-400 transition-all"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Form -->
+                <form id="cv-form" class="mt-3 space-y-5 text-sm">
+                  <!-- Step 1: Personal -->
+                  <div data-step="1" class="step-panel space-y-4">
+                    <div class="grid gap-4 sm:grid-cols-2">
+                      <div>
+                        <label class="block text-xs font-medium text-ink-700 mb-1">
+                          Full name
+                        </label>
+                        <input
+                          type="text"
+                          name="fullName"
+                          placeholder="Alex Johnson"
+                          class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-ink-900 shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100 outline-none"
+                        />
+                      </div>
+                      <div>
+                        <label class="block text-xs font-medium text-ink-700 mb-1">
+                          Professional title
+                        </label>
+                        <input
+                          type="text"
+                          name="title"
+                          placeholder="Senior Product Designer"
+                          class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-ink-900 shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100 outline-none"
+                        />
+                      </div>
+                    </div>
+                    <div class="grid gap-4 sm:grid-cols-3">
+                      <div>
+                        <label class="block text-xs font-medium text-ink-700 mb-1">
+                          Email
+                        </label>
+                        <input
+                          type="email"
+                          name="email"
+                          placeholder="alex@example.com"
+                          class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100 outline-none"
+                        />
+                      </div>
+                      <div>
+                        <label class="block text-xs font-medium text-ink-700 mb-1">
+                          Phone
+                        </label>
+                        <input
+                          type="text"
+                          name="phone"
+                          placeholder="+1 (555) 123‑4567"
+                          class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100 outline-none"
+                        />
+                      </div>
+                      <div>
+                        <label class="block text-xs font-medium text-ink-700 mb-1">
+                          Location
+                        </label>
+                        <input
+                          type="text"
+                          name="location"
+                          placeholder="Berlin, Germany"
+                          class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100 outline-none"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <label class="block text-xs font-medium text-ink-700 mb-1">
+                        Portfolio / LinkedIn (optional)
+                      </label>
+                      <input
+                        type="url"
+                        name="website"
+                        placeholder="https://linkedin.com/in/username"
+                        class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100 outline-none"
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Step 2: Summary -->
+                  <div data-step="2" class="step-panel hidden space-y-4">
+                    <div>
+                      <label class="block text-xs font-medium text-ink-700 mb-1">
+                        Professional summary
+                      </label>
+                      <p class="text-[11px] text-ink-500 mb-1.5">
+                        2–3 lines highlighting your top skills, years of experience, and impact.
+                      </p>
+                      <textarea
+                        name="summary"
+                        rows="4"
+                        placeholder="Senior Product Designer with 7+ years crafting data‑driven, accessible experiences for SaaS products. Led cross‑functional teams to ship high‑impact features that improved activation by 24% and reduced support tickets by 18%."
+                        class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100 outline-none resize-none"
+                      ></textarea>
+                    </div>
+                  </div>
+
+                  <!-- Step 3: Experience -->
+                  <div data-step="3" class="step-panel hidden space-y-3">
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <label class="block text-xs font-medium text-ink-700 mb-1">
+                          Experience
+                        </label>
+                        <p class="text-[11px] text-ink-500">
+                          Add up to 3 recent roles. Use action verbs and measurable impact.
+                        </p>
+                      </div>
+                      <button
+                        type="button"
+                        id="add-experience"
+                        class="inline-flex items-center gap-1.5 rounded-full border border-dashed border-primary-200 px-3 py-1 text-[11px] font-medium text-primary-700 hover:bg-primary-50/60 transition-colors"
+                      >
+                        <span class="text-base leading-none">+</span>
+                        Add role
+                      </button>
+                    </div>
+                    <div id="experience-list" class="space-y-3"></div>
+                  </div>
+
+                  <!-- Step 4: Education & Skills -->
+                  <div data-step="4" class="step-panel hidden space-y-4">
+                    <div class="space-y-3">
+                      <div class="flex items-center justify-between">
+                        <label class="block text-xs font-medium text-ink-700 mb-1">
+                          Education
+                        </label>
+                      </div>
+                      <div class="grid gap-3 sm:grid-cols-[1.2fr_0.8fr]">
+                        <input
+                          type="text"
+                          name="educationDegree"
+                          placeholder="B.Sc. Computer Science, University of Amsterdam"
+                          class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100 outline-none"
+                        />
+                        <input
+                          type="text"
+                          name="educationYears"
+                          placeholder="2015 – 2018"
+                          class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100 outline-none"
+                        />
+                      </div>
+                    </div>
+                    <div class="space-y-2">
+                      <label class="block text-xs font-medium text-ink-700 mb-1">
+                        Key skills (comma‑separated)
+                      </label>
+                      <input
+                        type="text"
+                        name="skills"
+                        placeholder="Product discovery, UX research, Prototyping, Figma, Design systems"
+                        class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100 outline-none"
+                      />
+                      <p class="text-[11px] text-ink-500">
+                        Use keywords from the job description for better ATS matching.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Step 5: Settings -->
+                  <div data-step="5" class="step-panel hidden space-y-4">
+                    <div class="space-y-3">
+                      <label class="block text-xs font-medium text-ink-700 mb-1">
+                        Template style
+                      </label>
+                      <div class="grid grid-cols-2 gap-3 text-xs">
+                        <label
+                          class="flex flex-col gap-1 rounded-xl border border-primary-500 bg-primary-50/60 px-3 py-2 cursor-pointer"
+                        >
+                          <div class="flex items-center justify-between">
+                            <span class="font-medium text-ink-900">Classic</span>
+                            <input
+                              type="radio"
+                              name="template"
+                              value="classic"
+                              class="h-3 w-3 text-primary-600"
+                              checked
+                            />
+                          </div>
+                          <p class="text-[11px] text-ink-500">
+                            Single column, clean typographic hierarchy.
+                          </p>
+                        </label>
+                        <label
+                          class="flex flex-col gap-1 rounded-xl border border-slate-200 bg-white px-3 py-2 cursor-pointer"
+                        >
+                          <div class="flex items-center justify-between">
+                            <span class="font-medium text-ink-900">Compact</span>
+                            <input
+                              type="radio"
+                              name="template"
+                              value="compact"
+                              class="h-3 w-3 text-primary-600"
+                            />
+                          </div>
+                          <p class="text-[11px] text-ink-500">
+                            Denser layout for experienced profiles.
+                          </p>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="space-y-3">
+                      <label class="block text-xs font-medium text-ink-700 mb-1">
+                        Accent color
+                      </label>
+                      <div class="flex flex-wrap gap-2">
+                        <button
+                          type="button"
+                          data-accent="blue"
+                          class="accent-swatch h-7 w-7 rounded-full border-2 border-primary-700 bg-primary-500 shadow-sm"
+                        ></button>
+                        <button
+                          type="button"
+                          data-accent="slate"
+                          class="accent-swatch h-7 w-7 rounded-full border border-slate-400 bg-slate-500/90"
+                        ></button>
+                        <button
+                          type="button"
+                          data-accent="emerald"
+                          class="accent-swatch h-7 w-7 rounded-full border border-emerald-500 bg-emerald-400"
+                        ></button>
+                      </div>
+                    </div>
+                    <p class="text-[11px] text-ink-500">
+                      You can print or save your CV as PDF directly from your browser.
+                    </p>
+                  </div>
+
+                  <!-- Navigation buttons -->
+                  <div class="pt-1 flex items-center justify-between">
+                    <button
+                      type="button"
+                      id="prev-step"
+                      class="inline-flex items-center gap-1 rounded-full border border-slate-200 px-3 py-1.5 text-xs font-medium text-ink-700 hover:bg-slate-50 disabled:opacity-40 disabled:hover:bg-transparent"
+                      disabled
+                    >
+                      ← Back
+                    </button>
+                    <div class="flex items-center gap-3">
+                      <p id="form-hint" class="hidden text-[11px] text-emerald-600">
+                        CV updated. Use your browser’s print dialog to export as PDF.
+                      </p>
+                      <button
+                        type="button"
+                        id="next-step"
+                        class="inline-flex items-center gap-1.5 rounded-full bg-primary-600 px-4 py-1.5 text-xs font-semibold text-white shadow-md shadow-primary-600/30 hover:bg-primary-700"
+                      >
+                        Next step
+                        <span>→</span>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <!-- Right: CV Preview -->
+            <div class="relative">
+              <div
+                class="pointer-events-none absolute -top-8 -right-6 h-40 w-40 rounded-full bg-primary-100 blur-3xl opacity-50"
+              ></div>
+              <div
+                class="relative glass-panel rounded-2xl border border-slate-200/80 shadow-2xl shadow-slate-900/10 p-4 sm:p-5 lg:p-6"
+              >
+                <div class="flex items-center justify-between mb-3">
+                  <div>
+                    <p class="text-xs font-semibold text-ink-700 uppercase section-label">
+                      Live preview
+                    </p>
+                    <p class="text-[11px] text-ink-500">
+                      Your CV updates as you type
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onclick="window.print()"
+                    class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-[11px] font-medium text-ink-700 hover:bg-slate-50"
+                  >
+                    Export PDF
+                  </button>
+                </div>
+
+                <div
+                  id="cv-preview"
+                  class="mx-auto min-h-[700px] w-full max-w-[520px] overflow-y-auto rounded-xl border border-slate-200 bg-white shadow-md"
+                >
+                  <div id="cv-root" class="min-h-full w-full p-6 text-[12px] text-ink-900">
+                    <!-- Filled dynamically -->
+                  </div>
+                </div>
+              </div>
+              <p class="mt-4 text-[11px] text-ink-500 leading-relaxed">
+                Built with clean HTML and semantic sections so Applicant Tracking Systems can
+                parse your experience without losing key details.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="border-t border-slate-200/70 bg-white/80 backdrop-blur">
+        <div
+          class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2"
+        >
+          <p class="text-[11px] text-ink-500">
+            © <span id="year"></span> CV Studio. Crafted for modern job seekers.
+          </p>
+          <div class="flex flex-wrap gap-3 text-[11px] text-ink-500">
+            <span>Designed for ATS compatibility</span>
+            <span class="hidden sm:inline text-slate-300">•</span>
+            <span>Best with PDF export</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- AI Chat Widget -->
+    <button
+      id="ai-chat-toggle"
+      class="fixed bottom-5 right-5 z-40 inline-flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-tr from-primary-600 to-sky-400 text-white shadow-lg shadow-primary-600/40 hover:scale-105 active:scale-95 transition-transform"
+      aria-label="Open AI CV assistant"
+    >
+      <span class="text-lg leading-none">✧</span>
+    </button>
+    <div
+      id="ai-chat-panel"
+      class="fixed bottom-20 right-5 z-40 w-80 max-w-[92vw] glass-panel rounded-2xl border border-slate-200/80 shadow-2xl shadow-slate-900/20 p-3 text-[12px] hidden"
+    >
+      <div class="flex items-center justify-between gap-2 mb-2">
+        <div>
+          <p class="text-[11px] font-medium text-primary-700 tracking-[0.16em] uppercase">
+            AI CV assistant
+          </p>
+          <p class="text-[11px] text-ink-500">
+            Ask for bullet points, summaries, or wording help.
+          </p>
+        </div>
+        <button
+          type="button"
+          id="ai-chat-close"
+          class="h-6 w-6 inline-flex items-center justify-center rounded-full border border-slate-200 text-[11px] text-ink-500 hover:bg-slate-50"
+        >
+          ✕
+        </button>
+      </div>
+      <div
+        id="ai-chat-messages"
+        class="mb-2 max-h-56 overflow-y-auto space-y-2 pr-1 custom-scrollbar"
+      >
+        <div class="flex gap-2">
+          <div
+            class="h-6 w-6 flex-shrink-0 rounded-full bg-gradient-to-tr from-primary-600 to-sky-400 text-[11px] text-white flex items-center justify-center"
+          >
+            CV
+          </div>
+          <div
+            class="rounded-2xl rounded-tl-sm bg-slate-50 px-3 py-2 text-[11px] text-ink-700 shadow-sm border border-slate-200/80"
+          >
+            Hi! Paste your experience or job description and I’ll help you turn it into strong,
+            ATS‑friendly CV bullet points.
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-1 mb-2">
+        <button
+          type="button"
+          data-ai-suggest="Help me write a 3 line professional summary for a front-end developer."
+          class="px-2 py-1 rounded-full bg-slate-50 border border-slate-200 text-[10px] text-ink-600 hover:bg-slate-100"
+        >
+          Summary help
+        </button>
+        <button
+          type="button"
+          data-ai-suggest="Turn this into 3 impact-focused bullet points with metrics."
+          class="px-2 py-1 rounded-full bg-slate-50 border border-slate-200 text-[10px] text-ink-600 hover:bg-slate-100"
+        >
+          Bullet points
+        </button>
+      </div>
+      <form id="ai-chat-form" class="flex items-end gap-2 text-[12px]">
+        <textarea
+          id="ai-chat-input"
+          rows="2"
+          placeholder="Ask anything about your CV..."
++          class="flex-1 resize-none rounded-xl border border-slate-200 bg-white px-2.5 py-1.5 shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100 outline-none"
+        ></textarea>
+        <button
+          type="submit"
+          class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary-600 text-white text-[11px] shadow-md shadow-primary-600/40 hover:bg-primary-700"
+        >
+          ➤
+        </button>
+      </form>
+      <p class="mt-1 text-[10px] text-ink-400">
+        Demo only – responses are generated in your browser for copywriting ideas.
+      </p>
+    </div>
+
+    <!-- App Script -->
+    <script>
+      const steps = [
+        { id: 1, title: 'Personal details' },
+        { id: 2, title: 'Professional summary' },
+        { id: 3, title: 'Experience' },
+        { id: 4, title: 'Education & skills' },
+        { id: 5, title: 'Template & style' },
+      ];
+
+      const cvState = {
+        fullName: 'Alex Johnson',
+        title: 'Senior Product Designer',
+        email: 'alex@example.com',
+        phone: '+1 (555) 123‑4567',
+        location: 'Berlin, Germany',
+        website: 'linkedin.com/in/alexjohnson',
+        summary:
+          'Senior Product Designer with 7+ years crafting data‑driven, accessible experiences for B2B SaaS. Partnered with product and engineering to ship features that increased activation and reduced support volume.',
+        educationDegree: 'B.Sc. Human‑Computer Interaction, University of Amsterdam',
+        educationYears: '2013 – 2016',
+        skills:
+          'Product discovery, UX research, Prototyping, Figma, Design systems, Stakeholder management',
+        experiences: [
+          {
+            role: 'Senior Product Designer',
+            company: 'Northlight Analytics',
+            period: '2021 – Present',
+            location: 'Remote',
+            bullets: [
+              'Led end‑to‑end design for a core analytics module used by 4k+ monthly active users.',
+              'Redesigned onboarding, improving week‑1 activation by 22%.',
+              'Built a component library in Figma, reducing design‑to‑dev handoff time by 30%.',
+            ],
+          },
+          {
+            role: 'Product Designer',
+            company: 'Brightlane',
+            period: '2018 – 2021',
+            location: 'Amsterdam, NL',
+            bullets: [
+              'Collaborated with PMs and engineers on experiments that lifted conversion by 14%.',
+              'Improved form UX across the funnel, reducing drop‑off by 19%.',
+            ],
+          },
+        ],
+        accent: 'blue',
+        template: 'classic',
+      };
+
+      let currentStep = 1;
+
+      const formEl = document.getElementById('cv-form');
+      const stepNumberEl = document.getElementById('step-number');
+      const stepTitleEl = document.getElementById('step-title');
+      const stepProgressEl = document.getElementById('step-progress');
+      const prevStepBtn = document.getElementById('prev-step');
+      const nextStepBtn = document.getElementById('next-step');
+      const formHintEl = document.getElementById('form-hint');
+      const experienceListEl = document.getElementById('experience-list');
+      const addExperienceBtn = document.getElementById('add-experience');
+      const yearEl = document.getElementById('year');
+      const cvRoot = document.getElementById('cv-root');
+
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+
+      function updateStepUI() {
+        const step = steps.find((s) => s.id === currentStep);
+        stepNumberEl.textContent = currentStep;
+        stepTitleEl.textContent = step.title;
+
+        const progress = (currentStep / steps.length) * 100;
+        stepProgressEl.style.width = progress + '%';
+
+        document.querySelectorAll('.step-panel').forEach((panel) => {
+          const stepId = Number(panel.getAttribute('data-step'));
+          panel.classList.toggle('hidden', stepId !== currentStep);
+        });
+
+        prevStepBtn.disabled = currentStep === 1;
+        nextStepBtn.textContent = currentStep === steps.length ? 'Finish & update CV' : 'Next step →';
+      }
+
+      function renderExperiences() {
+        experienceListEl.innerHTML = '';
+        cvState.experiences.forEach((exp, index) => {
+          const wrapper = document.createElement('div');
+          wrapper.className =
+            'rounded-xl border border-slate-200 bg-white px-3 py-3 space-y-2 shadow-sm';
+
+          wrapper.innerHTML = `
+            <div class="flex items-center justify-between gap-2">
+              <p class="text-xs font-semibold text-ink-700">Role ${index + 1}</p>
+              <button
+                type="button"
+                data-index="${index}"
+                class="text-[11px] text-ink-500 hover:text-red-500"
+              >
+                Remove
+              </button>
+            </div>
+            <div class="grid gap-2 sm:grid-cols-[0.9fr_0.9fr_0.7fr]">
+              <input
+                type="text"
+                data-field="role"
+                data-index="${index}"
+                placeholder="Job title"
+                value="${exp.role || ''}"
+                class="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-[12px] shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100 outline-none"
+              />
+              <input
+                type="text"
+                data-field="company"
+                data-index="${index}"
+                placeholder="Company"
+                value="${exp.company || ''}"
+                class="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-[12px] shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100 outline-none"
+              />
+              <input
+                type="text"
+                data-field="period"
+                data-index="${index}"
+                placeholder="Years"
+                value="${exp.period || ''}"
+                class="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-[12px] shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100 outline-none"
+              />
+            </div>
+            <div class="grid gap-2 sm:grid-cols-[0.6fr_1.4fr]">
+              <input
+                type="text"
+                data-field="location"
+                data-index="${index}"
+                placeholder="Location"
+                value="${exp.location || ''}"
+                class="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-[12px] shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100 outline-none"
+              />
+              <textarea
+                rows="2"
+                data-field="bullets"
+                data-index="${index}"
+                placeholder="Key achievements (separate with • or line breaks)"
+                class="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-[12px] shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100 outline-none resize-none"
+              >${(exp.bullets || []).join(' • ')}</textarea>
+            </div>
+          `;
+
+          experienceListEl.appendChild(wrapper);
+        });
+      }
+
+      function attachExperienceHandlers() {
+        experienceListEl.addEventListener('input', (e) => {
+          const target = e.target;
+          const index = Number(target.getAttribute('data-index'));
+          const field = target.getAttribute('data-field');
+          if (!Number.isFinite(index) || !field) return;
+
+          if (field === 'bullets') {
+            const raw = target.value
+              .split(/[\n•]/)
+              .map((s) => s.trim())
+              .filter(Boolean);
+            cvState.experiences[index].bullets = raw;
+          } else {
+            cvState.experiences[index][field] = target.value;
+          }
+          renderCV();
+        });
+
+        experienceListEl.addEventListener('click', (e) => {
+          const target = e.target;
+          if (target.tagName === 'BUTTON' && target.hasAttribute('data-index')) {
+            const index = Number(target.getAttribute('data-index'));
+            cvState.experiences.splice(index, 1);
+            renderExperiences();
+            renderCV();
+          }
+        });
+      }
+
+      function addExperience() {
+        cvState.experiences.push({
+          role: '',
+          company: '',
+          period: '',
+          location: '',
+          bullets: [],
+        });
+        renderExperiences();
+      }
+
+      function renderCV() {
+        const accentClass =
+          cvState.accent === 'emerald'
+            ? 'border-emerald-500 text-emerald-700'
+            : cvState.accent === 'slate'
+            ? 'border-slate-600 text-slate-800'
+            : 'border-primary-600 text-primary-700';
+
+        const accentDotClass =
+          cvState.accent === 'emerald'
+            ? 'bg-emerald-500'
+            : cvState.accent === 'slate'
+            ? 'bg-slate-600'
+            : 'bg-primary-600';
+
+        const experiencesHtml = cvState.experiences
+          .map((exp) => {
+            if (!exp.role && !exp.company) return '';
+            const bullets = (exp.bullets || [])
+              .map(
+                (b) =>
+                  `<li class="relative pl-3 leading-snug"><span class="absolute left-0 top-1 h-1 w-1 rounded-full ${accentDotClass}"></span>${b}</li>`
+              )
+              .join('');
+            return `
+              <div class="space-y-0.5">
+                <p class="font-semibold">${exp.role || ''}</p>
+                <p class="text-[11px] text-ink-500">
+                  ${exp.company || ''}${exp.company && exp.location ? ' • ' : ''}${
+              exp.location || ''
+            }
+                </p>
+                <p class="text-[11px] text-ink-500">${exp.period || ''}</p>
+                ${
+                  bullets
+                    ? `<ul class="mt-1 space-y-0.5 text-[11px] text-ink-700">${bullets}</ul>`
+                    : ''
+                }
+              </div>
+            `;
+          })
+          .join('');
+
+        const skills = (cvState.skills || '')
+          .split(',')
+          .map((s) => s.trim())
+          .filter(Boolean);
+
+        cvRoot.innerHTML = `
+          <section class="flex flex-col gap-4 border-b pb-3 mb-3">
+            <div>
+              <h1 class="font-display text-xl tracking-tight">${cvState.fullName || ''}</h1>
+              <p class="text-[12px] text-ink-500">${cvState.title || ''}</p>
+            </div>
+            <div
+              class="rounded border-l-2 ${accentClass} bg-slate-50/80 px-3 py-2 text-[11px] flex flex-wrap gap-x-4 gap-y-1"
+            >
+              ${cvState.email ? `<span>${cvState.email}</span>` : ''}
+              ${cvState.phone ? `<span>${cvState.phone}</span>` : ''}
+              ${cvState.location ? `<span>${cvState.location}</span>` : ''}
+              ${
+                cvState.website
+                  ? `<span>${cvState.website.replace(/^https?:\/\//, '')}</span>`
+                  : ''
+              }
+            </div>
+          </section>
+
+          <section class="space-y-1.5 mb-3">
+            <h2 class="font-semibold text-[12px] tracking-[0.16em] uppercase text-ink-700">
+              Summary
+            </h2>
+            <p class="text-[11px] text-ink-700 leading-relaxed">
+              ${cvState.summary || ''}
+            </p>
+          </section>
+
+          ${
+            experiencesHtml
+              ? `
+            <section class="space-y-1.5 mb-3">
+              <h2 class="font-semibold text-[12px] tracking-[0.16em] uppercase text-ink-700">
+                Experience
+              </h2>
+              <div class="space-y-2.5 text-[12px]">
+                ${experiencesHtml}
+              </div>
+            </section>
+          `
+              : ''
+          }
+
+          <section class="grid grid-cols-[1.1fr_0.9fr] gap-4">
+            <div class="space-y-1.5">
+              <h2 class="font-semibold text-[12px] tracking-[0.16em] uppercase text-ink-700">
+                Education
+              </h2>
+              <div class="space-y-0.5 text-[12px]">
+                <p>${cvState.educationDegree || ''}</p>
+                <p class="text-[11px] text-ink-500">${cvState.educationYears || ''}</p>
+              </div>
+            </div>
+            <div class="space-y-1.5">
+              <h2 class="font-semibold text-[12px] tracking-[0.16em] uppercase text-ink-700">
+                Skills
+              </h2>
+              <div class="flex flex-wrap gap-1.5">
+                ${skills
+                  .map(
+                    (skill) =>
+                      `<span class="rounded-full border border-slate-200 px-2 py-0.5 text-[10px]">${skill}</span>`
+                  )
+                  .join('')}
+              </div>
+            </div>
+          </section>
+        `;
+      }
+
+      function syncFormWithState() {
+        formEl.fullName.value = cvState.fullName;
+        formEl.title.value = cvState.title;
+        formEl.email.value = cvState.email;
+        formEl.phone.value = cvState.phone;
+        formEl.location.value = cvState.location;
+        formEl.website.value = cvState.website;
+        formEl.summary.value = cvState.summary;
+        formEl.educationDegree.value = cvState.educationDegree;
+        formEl.educationYears.value = cvState.educationYears;
+        formEl.skills.value = cvState.skills;
+
+        formEl.template.value = cvState.template;
+      }
+
+      function attachFormHandlers() {
+        formEl.addEventListener('input', (e) => {
+          const { name, value } = e.target;
+          if (!(name in cvState)) return;
+          cvState[name] = value;
+          renderCV();
+        });
+
+        document.querySelectorAll('.accent-swatch').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const accent = btn.getAttribute('data-accent');
+            cvState.accent = accent;
+            document.querySelectorAll('.accent-swatch').forEach((b) => {
+              b.classList.remove('ring-2', 'ring-offset-2', 'ring-primary-500');
+            });
+            btn.classList.add('ring-2', 'ring-offset-2', 'ring-primary-500');
+            renderCV();
+          });
+        });
+
+        formEl.addEventListener('change', (e) => {
+          if (e.target.name === 'template') {
+            cvState.template = e.target.value;
+            renderCV();
+          }
+        });
+      }
+
+      function attachStepHandlers() {
+        nextStepBtn.addEventListener('click', () => {
+          if (currentStep < steps.length) {
+            currentStep += 1;
+            updateStepUI();
+          } else {
+            formHintEl.classList.remove('hidden');
+            setTimeout(() => {
+              formHintEl.classList.add('hidden');
+            }, 3000);
+            renderCV();
+          }
+        });
+
+        prevStepBtn.addEventListener('click', () => {
+          if (currentStep > 1) {
+            currentStep -= 1;
+            updateStepUI();
+          }
+        });
+      }
+
+      function init() {
+        renderExperiences();
+        attachExperienceHandlers();
+        syncFormWithState();
+        attachFormHandlers();
+        attachStepHandlers();
+        addExperienceBtn.addEventListener('click', addExperience);
+        updateStepUI();
+        renderCV();
+      }
+
+      document.addEventListener('DOMContentLoaded', init);
+
+      // Mobile menu toggle
+      function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        const icon = document.getElementById('mobile-menu-icon');
+        const closeIcon = document.getElementById('mobile-menu-close-icon');
+        
+        menu.classList.toggle('hidden');
+        icon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      }
+
+      function closeMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        const icon = document.getElementById('mobile-menu-icon');
+        const closeIcon = document.getElementById('mobile-menu-close-icon');
+        
+        menu.classList.add('hidden');
+        icon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const menuButton = document.getElementById('mobile-menu-button');
+        if (menuButton) {
+          menuButton.addEventListener('click', toggleMobileMenu);
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+          const menu = document.getElementById('mobile-menu');
+          const button = document.getElementById('mobile-menu-button');
+          if (menu && button && !menu.contains(e.target) && !button.contains(e.target)) {
+            if (!menu.classList.contains('hidden')) {
+              closeMobileMenu();
+            }
+          }
+        });
+      });
+    </script>
+    <script src="chat-widget.js"></script>
+  </body>
+</html>
+
+
